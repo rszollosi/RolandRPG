@@ -1,1 +1,2 @@
 # RolandRPG
+A program egy egyszerû parancs soros játék, ahol egy barlangból kell kijutnunk hõsünkkel. Az utunk során folyamatosan döntéseket kell meghoznunk amik, vagy kijutásunkhoz, vagy halálunkhoz vezethet.

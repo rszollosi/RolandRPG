@@ -9,6 +9,7 @@ Player::Player(string name)
 	Name = name;
 	Hp = 100;
 	cout << "\n\nWelcome! " << "I am " << Name << ". I am your new character!\n";
+	PlayersInventory = new Inventory();
 }
 
 Player::Player(string name, int hp)
@@ -22,6 +23,7 @@ Player::~Player()
 {
 }
 
-void Player::showInvetory()
+void Player::OpenInvetory()
 {
+	PlayersInventory->ShowInventory();
 }

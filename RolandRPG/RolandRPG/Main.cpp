@@ -54,6 +54,7 @@ int main(){
 			exit(1);
 		}
 	}
+	system("pause");
 }
 
 deque<string> split(const string& str, const string& delim)

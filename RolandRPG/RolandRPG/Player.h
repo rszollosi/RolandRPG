@@ -10,6 +10,7 @@ protected:
 
 public:
 	Player(string name);
+	Player(string name, int hp);
 	~Player();
 
 	void showInvetory(); //Returns with inventory

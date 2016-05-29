@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string>
+#include "Game.h"
 using namespace std;
 
 int main(){
@@ -8,6 +9,7 @@ int main(){
 	cout << "\nPlease choose from one option, by tipeing the number!";
 	cout << "\n\n1. Start Game!" << "\n2. Load Game!" << "\n3. Exit Game!\n\n";
 	string input;
+	Game* game;
 	auto inputAsNumber = 0;
 	auto goodInput = false;
 
@@ -27,7 +29,8 @@ int main(){
 
 	switch (inputAsNumber)
 	{
-		case 1: cout << "Start a new game!";
+		case 1: cout << "Start a new game!\n";
+			game = new Game();
 		break;
 		case 2: cout << "Load the game!";
 		break;

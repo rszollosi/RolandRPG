@@ -6,13 +6,25 @@
 
 class Player : public Character
 {
+protected:
+	int Xp;
+	void GainXp(int gainedXp);
+	Inventory* PlayersInventory;
+
 public:
 	Player(string name);
 	Player(string name, int hp);
 	~Player();
 
-	Inventory* PlayersInventory;
-	void OpenInvetory();
+	
+	Inventory* OpenInvetory() const;
+	void Attack(Character* enemy) override;
+
+	int GetXp();
+	int GetNextLevelXp();
+	string GetXpStatus();
+
+	string StatusBar();
 };
 
 #endif

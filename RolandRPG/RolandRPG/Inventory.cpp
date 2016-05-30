@@ -102,6 +102,14 @@ Item* Inventory::GetItem(int index)
 	return nullptr ;
 }
 
+int Inventory::GetWeaponAttack()
+{
+	return Weapon == nullptr ? 0 : Weapon->Attack;
+}
 
+int Inventory::GetArmorDeffense()
+{
+	return Armor == nullptr ? 0 : Armor->Deffense;
+}
 
 

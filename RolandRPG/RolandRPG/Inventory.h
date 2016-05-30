@@ -32,6 +32,10 @@ public:
 	void ShowInventory();
 
 	Item* GetItem(int index);
+
+	int GetWeaponAttack();
+
+	int GetArmorDeffense();
 };
 
 #endif

@@ -13,6 +13,14 @@ Game::Game()
 
 	CurrentPlayer = new Player(name);
 
+	Npc* newEnemy = new Npc("Troll", 5, 10, 5);
+
+	CurrentPlayer->Attack(newEnemy);
+	CurrentPlayer->Attack(newEnemy);
+
+	cout << "\n\n" << CurrentPlayer->StatusBar();	
+
+	system("pause");
 }
 
 Game::Game(deque<string> loadedState)
@@ -26,7 +34,6 @@ Game::Game(deque<string> loadedState)
 	loadedState.pop_front();
 	
 	CurrentPlayer = new Player(name, atoi(hpAsString.c_str()));
-	
 }
 
 Game::~Game()
@@ -55,7 +62,7 @@ void Game::save()
 	ofstream gameFile;
 	string saveString;
 
-	saveString = CurrentPlayer->Name + ";" + to_string(CurrentPlayer->Hp);
+	saveString = CurrentPlayer->GetName() + ";" + to_string(CurrentPlayer->GetHp());
 	
 	gameFile.open("game.sav");
 

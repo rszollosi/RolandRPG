@@ -11,20 +11,23 @@ protected:
 	void GainXp(int gainedXp);
 	Inventory* PlayersInventory;
 
+
 public:
 	Player(string name);
 	Player(string name, int hp);
 	~Player();
 
 	
-	Inventory* OpenInvetory() const;
+	void OpenInvetory();
 	void Attack(Character* enemy) override;
 
 	int GetXp();
 	int GetNextLevelXp();
 	string GetXpStatus();
 
-	string StatusBar();
+	string StatusBar() override;
+
+	void PickUpItem(Item* item);
 };
 
 #endif

@@ -21,6 +21,16 @@ Game::Game()
 	cout << "\n\n" << CurrentPlayer->StatusBar();	
 
 	system("pause");
+
+	Item* sword = new Item(1, "Sword", 2, Offensive);
+	Item* shield = new Item(2, "Shield", 2, Deffensive);
+
+	CurrentPlayer->PickUpItem(sword);
+	CurrentPlayer->PickUpItem(shield);
+	CurrentPlayer->OpenInvetory();
+
+	system("pause");
+
 }
 
 Game::Game(deque<string> loadedState)

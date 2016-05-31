@@ -27,6 +27,8 @@ public:
 
 	string GetCapacity() const;
 
+	int GetItemCount() const;
+
 	string GetCurrentSize() const;
 
 	void ShowInventory();

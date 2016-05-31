@@ -1,5 +1,6 @@
 #include "Player.h"
-
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -48,9 +49,36 @@ Player::~Player()
 {
 }
 
-Inventory* Player::OpenInvetory() const
+void Player::OpenInvetory()
 {
-	return PlayersInventory;
+	while (true)
+	{
+		system("cls");
+		PlayersInventory->ShowInventory();
+
+		cout << "\n\nType the number of the item that you want to use or press 0 to exit!\n";
+
+		string input;
+		cin >> input;
+		if (std::all_of(input.begin(), input.end(), ::isdigit))
+		{
+			int decision = atoi(input.c_str());
+			if (decision == 0)
+				return;
+			if (decision <= PlayersInventory->GetItemCount())
+			{
+				Item* item;
+				item = PlayersInventory->GetItem(decision);
+				item->ItemType == Deffensive ? PlayersInventory->EquipArmor(*item) : PlayersInventory->EquipWeapon(*item);
+			}
+			else
+				cout << "\nI can't do that!\n";
+		}
+		else
+			cout << "\nI can't do that!\n";
+
+		system("pause");
+	}
 }
 
 void Player::Attack(Character* enemy)
@@ -84,7 +112,12 @@ string Player::GetXpStatus()
 
 string Player::StatusBar()
 {
-	return "Hp : " + to_string(Hp) + "   " + GetXpStatus() + "   Attack power: " + to_string(AttackPower + PlayersInventory->GetWeaponAttack()) + "   Deffense: " + to_string(PlayersInventory->GetArmorDeffense());
+	return "Player " + Name + " Hp : " + to_string(Hp) + "   " + GetXpStatus() + "   Attack power: " + to_string(AttackPower + PlayersInventory->GetWeaponAttack()) + "   Deffense: " + to_string(PlayersInventory->GetArmorDeffense());
+}
+
+void Player::PickUpItem(Item* item)
+{
+	PlayersInventory->PickUpItem(*item);
 }
 
 int Player::GetNextLevelXp()

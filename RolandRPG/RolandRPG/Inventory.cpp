@@ -56,6 +56,11 @@ int Inventory::EquipWeapon(Item weapon)
 	return Weapon->Attack;
 }
 
+int Inventory::GetItemCount() const
+{
+	return Items.size();
+}
+
 string Inventory::GetCapacity() const
 {
 	return "Inventory: " + to_string(Items.size()) + " / 5";
@@ -80,12 +85,17 @@ void Inventory::ShowInventory()
 	else
 		cout << "\nI don't wear any armor right now!";
 
-	cout << "\n\nThe list of items in my inventory:";
-	for (auto it = Items.begin(); it != Items.end(); ++it)
+	if (Items.size() > 0)
 	{
-		cout << "\n" << counter << ". Name: " << it->Name << " Item level: " << it->ItemLvl;
-		counter++;
+		cout << "\n\nThe list of items in my inventory:";
+		for (auto it = Items.begin(); it != Items.end(); ++it)
+		{
+			cout << "\n" << counter << ". Name: " << it->Name << " Item level: " << it->ItemLvl;
+			counter++;
+		}
 	}
+	else
+		cout << "\n\nI don't have any item in my inventory!";
 }
 
 Item* Inventory::GetItem(int index)

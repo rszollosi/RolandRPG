@@ -16,13 +16,14 @@ protected:
 
 public:
 	Character();
-	~Character();
+	virtual ~Character();
 
 	string GetName();
 	int GetHp();
 	virtual void Attack(Character* enemy);
 	void GetDamaged(int attackPower);
 	int GetLevel();
+	virtual string StatusBar();
 };
 
 #endif

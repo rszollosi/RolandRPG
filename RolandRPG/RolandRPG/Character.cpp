@@ -1,5 +1,6 @@
 
 #include "Character.h"
+#include <ctime>
 
 using namespace std;
 
@@ -52,4 +53,9 @@ void Character::GetDamaged(int attackPower)
 int Character::GetLevel()
 {	
 	return Level;
+}
+
+string Character::StatusBar()
+{
+	return "";
 }

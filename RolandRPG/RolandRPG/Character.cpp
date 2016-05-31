@@ -34,8 +34,8 @@ void Character::Attack(Character* enemy)
 void Character::GetDamaged(int attackPower)
 {
 	int blocking;
-
-	blocking = rand() % 1;
+	srand(time(nullptr));
+	blocking = rand() % 2;
 
 	if (blocking == 0)
 	{

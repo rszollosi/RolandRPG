@@ -5,25 +5,25 @@
 #include <string>
 #include <stack>
 #include <fstream>
+#include <algorithm>
 #include "Npc.h"
 #include "Player.h"
+#include "Combat.h"
 
 using namespace std;
 
 class Game
 {
-
-protected:
-	//status
-	//actors
 	Player* CurrentPlayer;
+	void GameMenu() const;
+	static void DisplayMenuOptions();
 
 public:
 	Game();
 	Game(deque<string> loadedState);
 	~Game();
 	string static load();
-	void save();
+	void save() const;
 };
 
 #endif

@@ -14,6 +14,9 @@ protected:
 	list<Item> Items;
 	OffensiveItem* Weapon;
 	DeffensiveItem* Armor;
+
+	Item* GetItem(int index);
+
 public:
 	Inventory();
 	Inventory(list<Item> loadedItems, DeffensiveItem* actualArmor, OffensiveItem* actualWeapon);
@@ -33,11 +36,11 @@ public:
 
 	void ShowInventory();
 
-	Item* GetItem(int index);
+	void SelectItem(int index);
 
-	int GetWeaponAttack();
+	int GetWeaponAttack() const;
 
-	int GetArmorDeffense();
+	int GetArmorDeffense() const;
 };
 
 #endif

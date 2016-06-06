@@ -5,11 +5,16 @@
 
 using namespace std;
 
+
 class Npc : public Character
 {
 public:
+	Npc(string name, int lvl);
 	Npc(string name, int lvl, int hp, int attack);
-	~Npc();
+
+	string StatusBar() override;
+
+	list<Item> GetLoot() const override;
 };
 
 #endif

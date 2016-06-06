@@ -12,7 +12,7 @@ void Player::GainXp(int gainedXp)
 		int remainingXp = GetNextLevelXp() - Xp;
 		if (remainingXp <= gainedXp)
 		{
-			Xp = Xp + remainingXp;
+			Xp = 0;
 			Level++;
 			cout << "\nI feel myself stronger! I reached level: " + to_string(Level);
 			LevelUp();

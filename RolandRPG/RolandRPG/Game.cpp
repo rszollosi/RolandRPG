@@ -5,6 +5,8 @@ using namespace std;
 void Game::GameMenu() const
 {
 	int decision;
+	auto steps = 1;
+
 	Combat* combat;
 	while (CurrentPlayer->GetHp() >0 )
 	{
@@ -16,23 +18,29 @@ void Game::GameMenu() const
 		if (all_of(input.begin(), input.end(), ::isdigit))
 		{
 			decision = atoi(input.c_str());
-			Npc* enemy = new Npc("Troll", 5, 20, 5);
+			Npc* enemy = new Npc("Troll", CurrentPlayer->GetLevel());
 			switch (decision)
 			{
 			case 0: return;
 			case 1: cout << "You asked me to engage something!\n";
 				combat = new Combat(CurrentPlayer, enemy);
 				break;
-			case 2: cout << "\nI will run away!\n";
-				break;
 			case 3: cout << "\nI will heal myself!\n";
 				break;
 			case 4: cout << "\nI will turn left!\n";
 				break;
+			case 5:
+				if (steps > 0)
+				{
+					cout << "\nI will turn back!\n";
+					steps--;
+				}
+				else cout << "\nI can't do that!";
+				break;
 			case 6: cout << "\nI will turn right!\n";
 				break;
-			case 7: cout << "\nGame is saved!\n";
-				break;
+			/*case 7: cout << "\nGame is saved!\n";
+				break;*/
 			case 8: cout << "\nI will go straight on!\n";
 				break;
 			case 9: CurrentPlayer->OpenInvetory();
@@ -41,6 +49,7 @@ void Game::GameMenu() const
 			default: cout << "\nI can't do that!";
 			}
 			system("pause");
+			steps++;
 		}
 	}
 
@@ -50,11 +59,11 @@ void Game::DisplayMenuOptions()
 {
 	cout << "What do you want me to do?\n";
 	cout << "Type 1 to engage an enemy,\n" 
-		<< " 2 to run away,\n" 
 		<< " 3 to heal,\n"
 		<< " 4 to turn left,\n"
+		<< " 5 to turn back,\n" 
 		<< " 6 to turn right,\n"
-		<< " 7 to sav the game,\n"
+		//<< " 7 to sav the game,\n"
 		<< " 8 to go straight,\n"
 		<< " 9 to open the inventory\n"
 		<< " or 0 to exit the game!\n\n";

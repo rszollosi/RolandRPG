@@ -38,7 +38,8 @@ int main(){
 		case 1: cout << "Start a new game!\n";
 			game = new Game();
 		break;
-		case 2: cout << "Load the game!\n";
+		case 2: cout << "Function is not working! :(\n";
+			/*
 			saveString = Game::load();
 			if (saveString != "") {
 				loadedGame = split(Game::load(), ";");
@@ -47,7 +48,7 @@ int main(){
 			else
 			{
 				cout << "There is no valid save file!\n";
-			}
+			}*/
 		break;
 		case 3: {
 			cout << "Bye!\n";

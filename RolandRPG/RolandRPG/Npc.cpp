@@ -5,6 +5,7 @@ Npc::Npc(string name, int lvl)
 	Name = name;
 	Level = lvl >= MaxLevel ? MaxLevel : lvl;
 	Hp = 50 + (Level - 1) * 20;
+	MaxHp = Hp;
 	AttackPower = 5 + (Level - 1) * 2;
 }
 
@@ -23,7 +24,7 @@ list<Item> Npc::GetLoot() const
 
 	int counter;
 
-	for (counter = 1; counter < Level; counter++)
+	for (counter = 0; counter < Level; counter++)
 		drop->push_back(*new Item(Level, Potion));
 
 	srand(time(nullptr));

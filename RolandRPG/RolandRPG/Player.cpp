@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int factorial(int n);
+int fibonacci(int n);
 
 void Player::GainXp(int gainedXp)
 {
@@ -22,6 +22,7 @@ void Player::GainXp(int gainedXp)
 		else
 		{
 			Xp = Xp + gainedXp;
+			gainedXp = 0;
 		}
 	}
 }
@@ -99,12 +100,12 @@ void Player::Attack(Character* enemy)
 	enemy->GetDamaged(AttackPower + PlayersInventory->GetWeaponAttack());
 	if (enemy->GetHp() <= 0)
 	{
-		int gainedXp = factorial(enemy->GetLevel()) * 20;
+		int gainedXp = fibonacci(enemy->GetLevel()) * 50;
 		cout << "\nI killed " << enemy->GetName() << " and gained " << gainedXp << " Xp";
 		auto gainedLoot =enemy->GetLoot();
 		delete enemy;
 
-		GainXp(Xp + gainedXp);
+		GainXp(gainedXp);
 		CheckLoot(gainedLoot);
 	}
 }
@@ -126,7 +127,7 @@ string Player::GetXpStatus()
 
 string Player::StatusBar()
 {
-	return "Player " + Name + " Hp : " + to_string(MaxHp) + "/" + to_string(Hp) + "   " + GetXpStatus() + "   Attack power: " + to_string(AttackPower + PlayersInventory->GetWeaponAttack()) + "   Deffense: " + to_string(PlayersInventory->GetArmorDeffense()) + "   Health potions: " + to_string(healthPotions);
+	return "Player " + Name + " Hp : " + to_string(GetMaxHp()) + "/" + to_string(Hp) + "   " + GetXpStatus() + "   Attack power: " + to_string(AttackPower + PlayersInventory->GetWeaponAttack()) + "   Deffense: " + to_string(PlayersInventory->GetArmorDeffense()) + "   Health potions: " + to_string(healthPotions);
 }
 
 void Player::PickUpItem(Item* item)
@@ -231,10 +232,10 @@ void Player::CheckLoot(list<Item> loot)
 
 int Player::GetNextLevelXp() const
 {
-	return factorial(Level) * 100;
+	return fibonacci(Level) * 100;
 }
 
-int factorial(int n)
+int fibonacci(int n)
 {
-	return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n;
+	return n <= 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
 }
